@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`flex min-h-screen ${inter.className}`}>
-        <section className="flex w-full flex-col justify-between min-h-full">{children}</section>
+        <section className="flex w-full flex-col justify-between min-h-full">
+          {children}
+        </section>
       </body>
     </html>
   );

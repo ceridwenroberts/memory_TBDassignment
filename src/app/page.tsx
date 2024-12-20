@@ -4,9 +4,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="m-auto">
-        MAin content
-      </main>
+      <main className="m-auto">Main content</main>
       <Footer />
     </>
   );
