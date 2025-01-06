@@ -1,4 +1,4 @@
-import {CardType} from "@/lib/types/types";
+import {CardType} from "@/lib/types";
 
 export function cardShuffler(cards: CardType[]): CardType[]  {
     const allCards = cards.concat(cards);
