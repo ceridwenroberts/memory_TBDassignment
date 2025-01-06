@@ -1,5 +1,5 @@
 const NewGameButton = () => {
-  return <button>New Game</button>;
+  return <button className="flex-1">New Game</button>;
 };
 
 export default NewGameButton;
