@@ -1,9 +1,7 @@
-"use client"
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { GameProvider } from "@/contexts/GameContext"
-import cardsData from "@/data/cardsData.json"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={ `flex min-h-screen ${inter.className}` }>
-            {/* <GameProvider cardsData={cardsData}> */}
+      <body className={`flex min-h-screen ${inter.className}`}>
         <section className="flex w-full flex-col justify-between min-h-full">
           {children}
-          </section>
-          {/* </GameProvider> */}
+        </section>
       </body>
     </html>
   );
