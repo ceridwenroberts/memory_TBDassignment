@@ -7,17 +7,18 @@ import {
   ReactNode,
 } from "react";
 
-import { type GameState } from "@/lib/types";
-import cardsData from "@/data/cardsData.json";
-import { type CardType, type HighscoreObjType } from "@/lib/types";
+import {
+  type GameStateType,
+  type GameStateActions,
+  type CardType,
+  type HighscoreObjType,
+} from "@/lib/types";
 import { cardShuffler } from "@/util/cardShuffler";
 
 type GameContextType = {
-  gameState: GameState;
-  setGameState: Dispatch<SetStateAction<GameState>>;
+  setGameState: Dispatch<SetStateAction<GameStateType>>;
   cardsData: CardType[];
   startNewGame: () => void;
-
   moves: number;
   setMoves: Dispatch<SetStateAction<number>>;
   highscoreObj: HighscoreObjType;
@@ -26,8 +27,14 @@ type GameContextType = {
   setShowForm: Dispatch<SetStateAction<boolean>>;
   flippedCards: number[];
   setFlippedCards: Dispatch<SetStateAction<number[]>>;
-  pairedCardsArray: string[];
-  setPairedCardsArray: Dispatch<SetStateAction<string[]>>;
+  pairedCards: string[];
+  setPairedCards: Dispatch<SetStateAction<string[]>>;
+  solved: boolean;
+  setSolved: Dispatch<SetStateAction<boolean>>;
+  newGame: boolean;
+  setNewGame: Dispatch<SetStateAction<boolean>>;
+  gameEnd: boolean;
+  setGameEnd: Dispatch<SetStateAction<boolean>>;
 };
 
 interface GameProviderProps {
@@ -38,24 +45,32 @@ interface GameProviderProps {
 const GameContext = createContext<GameContextType | null>(null);
 
 export const GameProvider = ({ children, cardsData }: GameProviderProps) => {
+  // const [gameCards, setGameCards] = useState<CardType[]>([]);
   const [moves, setMoves] = useState<number>(0);
   const [showForm, setShowForm] = useState<boolean>(false);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
-  const [pairedCardsArray, setPairedCardsArray] = useState<string[]>([]);
+  const [pairedCards, setPairedCards] = useState<string[]>([]);
+  const [solved, setSolved] = useState<boolean>(false);
+  const [newGame, setNewGame] = useState<boolean>(false);
+  const [gameEnd, setGameEnd] = useState<boolean>(false);
   const [highscoreObj, setHighscoreObj] = useState<HighscoreObjType>({
     highscore: 0,
     name: "",
   });
 
-  const newGameState: GameState = {
+  const newGameState: GameStateType = {
     gameCards: cardShuffler(cardsData),
     flippedCards: [],
-    pairedCardsArray: [],
+    pairedCards: [],
     moves: 0,
     showForm: false,
+    highscoreObj: {
+      highscore: 0,
+      name: "",
+    },
   };
 
-  const [gameState, setGameState] = useState<GameState>(newGameState);
+  const [gameState, setGameState] = useState<GameStateType>(newGameState);
 
   const startNewGame = (): void => {
     setGameState(newGameState);
@@ -64,20 +79,25 @@ export const GameProvider = ({ children, cardsData }: GameProviderProps) => {
   return (
     <GameContext.Provider
       value={{
-        gameState,
-        setGameState,
-        moves,
-        setMoves,
-        highscoreObj,
-        setHighscoreObj,
-        showForm,
-        flippedCards,
-        setFlippedCards,
-        pairedCardsArray,
-        setPairedCardsArray,
-        setShowForm,
-        startNewGame,
         cardsData,
+        startNewGame,
+        moves,
+        showForm,
+        highscoreObj,
+        flippedCards,
+        pairedCards,
+        setFlippedCards,
+        setPairedCards,
+        setMoves,
+        setShowForm,
+        setHighscoreObj,
+        setGameState,
+        solved,
+        setSolved,
+        newGame,
+        setNewGame,
+        gameEnd,
+        setGameEnd,
       }}
     >
       {children}
