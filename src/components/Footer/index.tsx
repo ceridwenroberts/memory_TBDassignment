@@ -2,7 +2,7 @@ import Rules from "../Rules";
 const Footer = () => {
   return (
     <div
-      className="mt-auto grid grid-cols-2 gap-x-4 p-4 bg-orange-800"
+      className="mt-auto grid grid-cols-2 gap-x-4 p-4 border border-t-1 border-orange-800"
       role="contentinfo"
     >
       <div
