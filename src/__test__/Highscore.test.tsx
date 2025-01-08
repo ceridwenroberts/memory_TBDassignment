@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Home from "../components/Highscore";
+import Home from "@/app/page";
 import Highscore from "../components/Highscore";
 
 const mockFunction = () => {
   return;
 };
+
 
 jest.spyOn(Storage.prototype, "setItem");
 
