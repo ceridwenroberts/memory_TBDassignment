@@ -22,7 +22,7 @@ const fireNewGame = ({
   setShowForm(false);
   setHighscoreObj({ highscore: 0, name: "" });
   setGameCards(cardShuffler(cards));
-  console.log("new game starting");
+  //console.log("new game starting");
   setSolved(false);
   setNewGame(false);
 };

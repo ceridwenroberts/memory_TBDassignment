@@ -108,7 +108,7 @@ const GameBoard = () => {
 
   const handleOnClick = (index: number): void => {
     if (disableClicks || flippedCards.includes(index)) {
-      console.log("not clickable yet");
+      //console.log("not clickable yet");
       return;
     }
     if (flippedCards.length === 1) {
@@ -123,8 +123,8 @@ const GameBoard = () => {
     if (flippedCards.length === 2) {
       setDisableClicks(true);
       const [firstIndex, secondIndex] = flippedCards;
-      console.log(gameCards[firstIndex], gameCards[secondIndex]);
-      console.log("paired", pairedCards);
+      // console.log(gameCards[firstIndex], gameCards[secondIndex]);
+      // console.log("paired", pairedCards);
       if (gameCards[firstIndex].name === gameCards[secondIndex].name) {
         setPairedCards((prev: string[]): string[] => [
           ...prev,
@@ -133,7 +133,7 @@ const GameBoard = () => {
         setFlippedCards([]);
         setDisableClicks(false);
       } else {
-        console.log(flippedCards);
+        //console.log(flippedCards);
         setTimeout(() => {
           setFlippedCards([]);
           setDisableClicks(false);
