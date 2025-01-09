@@ -4,7 +4,7 @@ import { useState } from "react";
 const NewGameButton = () => {
   const { pairedCards, setNewGame, gameEnd, setGameEnd } = useGameContext();
   const [gameStarted, setGameStarted] = useState<boolean>(false);
-  pairedCards.length === 6 && setGameEnd(true);
+  if( pairedCards.length === 6 ) setGameEnd(true);
   return (
     <button
       className={`border border-orange-800 rounded-md py-2 px-4 text-center text-orange-800 text-sm hover:shadow-lg ${
