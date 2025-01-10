@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Cabin",
+    "imgSrc": "/cabin.svg",
+    "reverse": "?"
+  },
+   {
+    "id": 2,
+    "name": "Car",
+    "imgSrc": "/car.svg",
+    "reverse": "?"
+  },
+   {
+    "id": 3,
+    "name": "Cow",
+    "imgSrc": "/cow.svg",
+    "reverse": "?"
+  },
+   {
+    "id": 4,
+    "name": "Flower",
+    "imgSrc": "/flower.svg",
+    "reverse": "?"
+  },
+   {
+    "id": 5,
+    "name": "Guitar",
+    "imgSrc": "/guitar.svg",
+    "reverse": "?"
+  },
+   {
+    "id": 6,
+    "name": "Pineapple",
+    "imgSrc": "/pineapple.svg",
+    "reverse": "?"
+  }
+]
