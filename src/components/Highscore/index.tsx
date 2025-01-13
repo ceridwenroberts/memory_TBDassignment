@@ -9,18 +9,14 @@ import {
   SetStateAction,
 } from "react";
 import { storageManager } from "@/util/storageManager";
-import NewGameButton from "@/components/NewGameButton";
+
 type HighscoreProps = {
-  setShowForm: Dispatch<SetStateAction<boolean>>;
-  updateNewHighscore?: any;
-  newRound: () => boolean;
+  updateNewHighscore: () => void;
+  setShowForm?: Dispatch<SetStateAction<boolean>>;
+  setHighscoreName: Dispatch<SetStateAction<string>>;
 };
 
-const Highscore = ({
-  updateNewHighscore,
-  setShowForm,
-  newRound,
-}: HighscoreProps) => {
+const Highscore = ({ updateNewHighscore, setShowForm }: HighscoreProps) => {
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
@@ -38,14 +34,9 @@ const Highscore = ({
 
     const formData = new FormData(e.currentTarget);
     const nameQuery = formData.get("query") as string;
+    updateNewHighscore();
 
     localStorage.setItem("name", nameQuery);
-    //  Why does my storage manager not work? Because of JSON.stringify()?
-    // To not to causes a type error in the manager. Is the working test version type safe?
-    // storageManager.setItem("name", nameQuery)
-    // Test output:
-    // Expected: "name", "Bartholomew"
-    // Received: "name", "\"Bartholomew\""
 
     if (formRef.current) {
       formRef.current.reset();
