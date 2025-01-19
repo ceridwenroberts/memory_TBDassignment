@@ -1,27 +1,13 @@
 "use client";
-import {
-  useEffect,
-  useRef,
-  useState,
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-} from "react";
+import { useRef, useState, ChangeEvent, FormEvent } from "react";
 import { storageManager } from "@/util/storageManager";
 
 type HighscoreProps = {
-  updateNewHighscore: () => void;
-  setShowForm?: Dispatch<SetStateAction<boolean>>;
-  setHighscoreName: Dispatch<SetStateAction<string>>;
+  updateNewHighscore: (nameQuery: string) => void;
 };
 
-const Highscore = ({ updateNewHighscore, setShowForm }: HighscoreProps) => {
+const Highscore = ({ updateNewHighscore }: HighscoreProps) => {
   const [name, setName] = useState<string>("");
-
-  useEffect(() => {
-    console.log("Name debug", name);
-  }, [name]);
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -34,7 +20,7 @@ const Highscore = ({ updateNewHighscore, setShowForm }: HighscoreProps) => {
 
     const formData = new FormData(e.currentTarget);
     const nameQuery = formData.get("query") as string;
-    updateNewHighscore();
+    updateNewHighscore(nameQuery);
 
     localStorage.setItem("name", nameQuery);
 
