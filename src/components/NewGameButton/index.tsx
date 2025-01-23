@@ -1,7 +1,9 @@
 import { MouseEvent } from "react";
+import { type CardType } from "@/lib/types"
 
 type NewGameButtonProps = {
   newRound: () => void;
+  paired: string[];
 };
 
 const NewGameButton = ({ newRound }: NewGameButtonProps) => {
